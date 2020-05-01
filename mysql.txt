@@ -1,0 +1,3 @@
+CREATE DATABASE firm_db;
+CREATE USER 'firm_user'@'%' IDENTIFIED BY 'FirmUserPassword';
+GRANT ALL ON firm_db.* TO 'firm_user'@'%';
