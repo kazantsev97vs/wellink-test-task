@@ -5,15 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import wellink.test.task.enums.Color;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 /**
  * Единица товара
  */
+@MappedSuperclass
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class Material {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+
+    private String name;
 
     private Double price;
 
@@ -26,25 +36,5 @@ public abstract class Material {
         LOCKS,      // "замки"
         SHOESOLES,  // "подошва для обуви"
         THREADS,    // "нитки"
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Material material = (Material) o;
-
-        if (id != null ? !id.equals(material.id) : material.id != null) return false;
-        if (price != null ? !price.equals(material.price) : material.price != null) return false;
-        return color == material.color;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (color != null ? color.hashCode() : 0);
-        return result;
     }
 }
