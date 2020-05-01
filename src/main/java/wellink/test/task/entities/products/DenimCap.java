@@ -8,15 +8,23 @@ import org.springframework.stereotype.Component;
 import wellink.test.task.enums.CapType;
 import wellink.test.task.models.Clothes;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Джинсовая кепка
  */
-@Component
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Scope("prototype")
 public class DenimCap extends Clothes {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
 
     /**
      * длина козырька (в см)
@@ -33,26 +41,4 @@ public class DenimCap extends Clothes {
      */
     private Boolean isThereCapSizeAdjustment;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-
-        DenimCap denimCap = (DenimCap) o;
-
-        if (visorLength != null ? !visorLength.equals(denimCap.visorLength) : denimCap.visorLength != null)
-            return false;
-        if (capType != denimCap.capType) return false;
-        return isThereCapSizeAdjustment != null ? isThereCapSizeAdjustment.equals(denimCap.isThereCapSizeAdjustment) : denimCap.isThereCapSizeAdjustment == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (visorLength != null ? visorLength.hashCode() : 0);
-        result = 31 * result + (capType != null ? capType.hashCode() : 0);
-        result = 31 * result + (isThereCapSizeAdjustment != null ? isThereCapSizeAdjustment.hashCode() : 0);
-        return result;
-    }
 }
