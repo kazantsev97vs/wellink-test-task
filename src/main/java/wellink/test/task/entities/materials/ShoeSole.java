@@ -16,14 +16,7 @@ import javax.persistence.Id;
  * Материал: "подошва для обуви"
  */
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ShoeSole extends Material {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
 
     public static Type type = Type.SHOESOLES;
 

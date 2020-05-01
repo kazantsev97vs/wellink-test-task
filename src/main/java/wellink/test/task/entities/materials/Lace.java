@@ -16,14 +16,7 @@ import javax.persistence.Id;
  * Материал: "шнурок"
  */
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Lace extends Material {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
 
     public static Type type = Type.LACES;
 

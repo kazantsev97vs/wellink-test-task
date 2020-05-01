@@ -16,15 +16,7 @@ import javax.persistence.Id;
  * Материал: "замок"
  */
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Lock extends Material {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-
     public static Type type = Type.LOCKS;
-
 }
