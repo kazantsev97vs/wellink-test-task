@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * CRUD-сервис для работы с логами
+ * Реализация CRUD-сервиса для работы с логами
  */
 @Service
 public class LogServiceImpl implements LogService {
@@ -79,6 +79,9 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public Log update(Log log) {
+
+        if (getByDate(log.getDate()) == null) return null;
+
         return logRepository.save(log);
     }
 

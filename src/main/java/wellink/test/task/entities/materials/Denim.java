@@ -24,6 +24,10 @@ public class Denim extends Material {
         this.density = density;
     }
 
+    public Denim(Density density) {
+        this.density = density;
+    }
+
     public Denim() {
     }
 }

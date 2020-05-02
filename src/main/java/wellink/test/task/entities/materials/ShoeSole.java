@@ -23,6 +23,10 @@ public class ShoeSole extends Material {
         this.thickness = thickness;
     }
 
+    public ShoeSole(SoleThickness thickness) {
+        this.thickness = thickness;
+    }
+
     public ShoeSole() {
     }
 
