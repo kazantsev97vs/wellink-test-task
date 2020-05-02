@@ -1,9 +1,9 @@
 package wellink.test.task.enums;
 
 /**
- * Плотность ткани
+ * Плотность (ткани, ниток, ...)
  */
-public enum FabricDensity {
+public enum Density {
     SMALL_DENSITY,
     AVERAGE_DENSITY,
     HIGH_DENSITY,
