@@ -15,11 +15,11 @@ public class Denim extends Material {
 
     private Density density;
 
-    public Denim(Integer id, String name, Double price, Color color) {
+    public Denim(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 
-    public Denim(Integer id, String name, Double price, Color color, Density density) {
+    public Denim(Long id, String name, Double price, Color color, Density density) {
         super(id, name, price, color);
         this.density = density;
     }

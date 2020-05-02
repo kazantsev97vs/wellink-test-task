@@ -21,11 +21,11 @@ public abstract class Clothes extends Material {
 
     private Age forWhatAge;
 
-    public Clothes(Integer id, String name, Double price, Color color) {
+    public Clothes(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 
-    public Clothes(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
+    public Clothes(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
         super(id, name, price, color);
         this.size = size;
         this.density = density;

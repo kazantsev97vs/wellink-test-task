@@ -28,22 +28,22 @@ public class DenimCap extends Clothes {
      */
     private Boolean hasCapSizeAdjustment;
 
-    public DenimCap(Integer id, String name, Double price, Color color) {
+    public DenimCap(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 
-    public DenimCap(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
+    public DenimCap(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
     }
 
-    public DenimCap(Integer id, String name, Double price, Color color, Integer visorLength, CapType capType, Boolean hasCapSizeAdjustment) {
+    public DenimCap(Long id, String name, Double price, Color color, Integer visorLength, CapType capType, Boolean hasCapSizeAdjustment) {
         super(id, name, price, color);
         this.visorLength = visorLength;
         this.capType = capType;
         this.hasCapSizeAdjustment = hasCapSizeAdjustment;
     }
 
-    public DenimCap(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge, Integer visorLength, CapType capType, Boolean hasCapSizeAdjustment) {
+    public DenimCap(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge, Integer visorLength, CapType capType, Boolean hasCapSizeAdjustment) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
         this.visorLength = visorLength;
         this.capType = capType;

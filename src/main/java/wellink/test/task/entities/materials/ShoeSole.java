@@ -14,11 +14,11 @@ public class ShoeSole extends Material {
 
     private SoleThickness thickness;
 
-    public ShoeSole(Integer id, String name, Double price, Color color) {
+    public ShoeSole(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 
-    public ShoeSole(Integer id, String name, Double price, Color color, SoleThickness thickness) {
+    public ShoeSole(Long id, String name, Double price, Color color, SoleThickness thickness) {
         super(id, name, price, color);
         this.thickness = thickness;
     }

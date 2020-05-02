@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 public class Lace extends Material {
     private Integer length;
 
-    public Lace(Integer id, String name, Double price, Color color) {
+    public Lace(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 

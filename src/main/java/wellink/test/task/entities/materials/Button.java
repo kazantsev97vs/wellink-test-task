@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Entity
 public class Button extends Material {
 
-    public Button(Integer id, String name, Double price, Color color) {
+    public Button(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 

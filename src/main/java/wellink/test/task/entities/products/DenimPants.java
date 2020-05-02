@@ -29,11 +29,11 @@ public class DenimPants extends Clothes {
     public DenimPants() {
     }
 
-    public DenimPants(Integer id, String name, Double price, Color color) {
+    public DenimPants(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 
-    public DenimPants(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
+    public DenimPants(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
     }
 
@@ -44,7 +44,7 @@ public class DenimPants extends Clothes {
         this.isInsulated = isInsulated;
     }
 
-    public DenimPants(Integer id, String name, Double price, Color color, Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
+    public DenimPants(Long id, String name, Double price, Color color, Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
         super(id, name, price, color);
         this.isSkinny = isSkinny;
         this.isStretch = isStretch;
@@ -52,7 +52,7 @@ public class DenimPants extends Clothes {
         this.isInsulated = isInsulated;
     }
 
-    public DenimPants(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge, Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
+    public DenimPants(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge, Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
         this.isSkinny = isSkinny;
         this.isStretch = isStretch;

@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Entity
 public class Lock extends Material {
 
-    public Lock(Integer id, String name, Double price, Color color) {
+    public Lock(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 
