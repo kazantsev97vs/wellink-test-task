@@ -1,23 +1,37 @@
 package wellink.test.task.entities.materials;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import wellink.test.task.enums.Color;
 import wellink.test.task.models.Material;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * Материал: "подошва для обуви"
  */
 @Entity
+@Data
 public class ShoeSole extends Material {
 
-    public static Type type = Type.SHOESOLES;
+    private SoleThickness thickness;
 
+    public ShoeSole(Integer id, String name, Double price, Color color) {
+        super(id, name, price, color);
+    }
+
+    public ShoeSole(Integer id, String name, Double price, Color color, SoleThickness thickness) {
+        super(id, name, price, color);
+        this.thickness = thickness;
+    }
+
+    public ShoeSole() {
+    }
+
+    /**
+     * толщина подошвы
+     */
+    public enum SoleThickness {
+        THICK,  // толстая
+        THIN,   // тонкая
+        AVERAGE // средняя
+    }
 }

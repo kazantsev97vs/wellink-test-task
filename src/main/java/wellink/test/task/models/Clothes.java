@@ -1,6 +1,5 @@
 package wellink.test.task.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import wellink.test.task.enums.*;
@@ -12,15 +11,25 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public abstract class Clothes extends Material {
 
     private Size size;
 
-    private FabricDensity fabricDensity;
+    private Density density;
 
-    private Gender gender;
+    private Gender forWhatGender;
 
     private Age forWhatAge;
 
+    public Clothes(Integer id, String name, Double price, Color color) {
+        super(id, name, price, color);
+    }
+
+    public Clothes(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
+        super(id, name, price, color);
+        this.size = size;
+        this.density = density;
+        this.forWhatGender = forWhatGender;
+        this.forWhatAge = forWhatAge;
+    }
 }

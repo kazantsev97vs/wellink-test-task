@@ -29,12 +29,4 @@ public abstract class Material {
 
     private Color color;
 
-    public static enum Type {
-        BUTTONS,    // "пуговицы"
-        DENIM,      // "джинсовая ткань"
-        LACES,      // "шнукри"
-        LOCKS,      // "замки"
-        SHOESOLES,  // "подошва для обуви"
-        THREADS,    // "нитки"
-    }
 }

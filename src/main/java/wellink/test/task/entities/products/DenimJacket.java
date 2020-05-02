@@ -3,7 +3,7 @@ package wellink.test.task.entities.products;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import wellink.test.task.enums.ClosureType;
+import wellink.test.task.enums.*;
 import wellink.test.task.models.Clothes;
 
 import javax.persistence.Entity;
@@ -13,8 +13,6 @@ import javax.persistence.Entity;
  */
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class DenimJacket extends Clothes {
 
     /**
@@ -38,5 +36,42 @@ public class DenimJacket extends Clothes {
     private Boolean isInsulated;
 
     private ClosureType closureType;
+
+    public DenimJacket() {
+    }
+
+    public DenimJacket(Integer id, String name, Double price, Color color) {
+        super(id, name, price, color);
+    }
+
+    public DenimJacket(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
+        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+    }
+
+    public DenimJacket(Boolean hasHood, Integer pocketsNumber, Integer sleeveLength, Boolean isInsulated, ClosureType closureType) {
+        this.hasHood = hasHood;
+        this.pocketsNumber = pocketsNumber;
+        this.sleeveLength = sleeveLength;
+        this.isInsulated = isInsulated;
+        this.closureType = closureType;
+    }
+
+    public DenimJacket(Integer id, String name, Double price, Color color, Boolean hasHood, Integer pocketsNumber, Integer sleeveLength, Boolean isInsulated, ClosureType closureType) {
+        super(id, name, price, color);
+        this.hasHood = hasHood;
+        this.pocketsNumber = pocketsNumber;
+        this.sleeveLength = sleeveLength;
+        this.isInsulated = isInsulated;
+        this.closureType = closureType;
+    }
+
+    public DenimJacket(Integer id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge, Boolean hasHood, Integer pocketsNumber, Integer sleeveLength, Boolean isInsulated, ClosureType closureType) {
+        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        this.hasHood = hasHood;
+        this.pocketsNumber = pocketsNumber;
+        this.sleeveLength = sleeveLength;
+        this.isInsulated = isInsulated;
+        this.closureType = closureType;
+    }
 
 }
