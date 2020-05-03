@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import wellink.test.task.entities.Log;
 import wellink.test.task.repositories.LogRepository;
 import wellink.test.task.services.LogService;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +30,11 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
+    public Log getById(Long fastTime) {
+        return getByDate(new Date(fastTime));
+    }
+
+    @Override
     public Log getFirstByDateAfter(Date date) {
         return logRepository.getFirstByDateAfter(date);
     }
@@ -35,6 +42,15 @@ public class LogServiceImpl implements LogService {
     @Override
     public Log getFirstByDateBefore(Date date) {
         return logRepository.getFirstByDateBefore(date);
+    }
+
+    @Override
+    public List<Log> getAll() {
+        List<Log> logList = new ArrayList<>();
+
+        logRepository.findAll().forEach(logList::add);
+
+        return logList;
     }
 
     @Override
@@ -89,6 +105,11 @@ public class LogServiceImpl implements LogService {
     public Boolean deleteByDate(Date date) {
         logRepository.deleteById(date);
         return logRepository.getByDate(date) == null;
+    }
+
+    @Override
+    public Boolean deleteById(Long fastTime) {
+        return deleteByDate(new Date(fastTime));
     }
 
     @Override
