@@ -1,9 +1,9 @@
 package wellink.test.task.entities.products;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import wellink.test.task.enums.*;
 import wellink.test.task.models.Clothes;
+
 import javax.persistence.Entity;
 
 /**
@@ -71,5 +71,15 @@ public class DenimCap extends Clothes {
         BUNNET,         //  кепка-тракер
         BASEBALL,       //  кепка буннет
         BICYCLE         //  кепка бейсболка
+    }
+
+    @Override
+    public String toString() {
+        return "DenimCap{"
+                + super.toString()
+                + ", visorLength=" + visorLength
+                + ", capType=" + capType
+                + ", hasCapSizeAdjustment=" + hasCapSizeAdjustment
+                + '}';
     }
 }

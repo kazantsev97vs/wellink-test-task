@@ -38,4 +38,12 @@ public class ShoeSole extends Material {
         THIN,   // тонкая
         AVERAGE // средняя
     }
+
+    @Override
+    public String toString() {
+        return "ShoeSole{"
+                + super.toString()
+                + ", thickness=" + thickness
+                + '}';
+    }
 }

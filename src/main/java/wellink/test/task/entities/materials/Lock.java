@@ -16,4 +16,9 @@ public class Lock extends Material {
 
     public Lock() {
     }
+
+    @Override
+    public String toString() {
+        return "Lock{" + super.toString() + '}';
+    }
 }

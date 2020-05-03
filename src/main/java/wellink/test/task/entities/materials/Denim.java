@@ -30,4 +30,12 @@ public class Denim extends Material {
 
     public Denim() {
     }
+
+    @Override
+    public String toString() {
+        return "Denim{"
+                + super.toString()
+                + ", density=" + density
+                + '}';
+    }
 }

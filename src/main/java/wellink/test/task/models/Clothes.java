@@ -32,4 +32,13 @@ public abstract class Clothes extends Material {
         this.forWhatGender = forWhatGender;
         this.forWhatAge = forWhatAge;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ", size=" + size
+                + ", density=" + density
+                + ", forWhatGender=" + forWhatGender
+                + ", forWhatAge=" + forWhatAge;
+    }
 }

@@ -1,8 +1,6 @@
 package wellink.test.task.entities.products;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import wellink.test.task.enums.*;
 import wellink.test.task.models.Clothes;
 
@@ -74,4 +72,15 @@ public class DenimJacket extends Clothes {
         this.closureType = closureType;
     }
 
+    @Override
+    public String toString() {
+        return "DenimJacket{"
+                + super.toString()
+                + ", hasHood=" + hasHood
+                + ", pocketsNumber=" + pocketsNumber
+                + ", sleeveLength=" + sleeveLength
+                + ", isInsulated=" + isInsulated
+                + ", closureType=" + closureType
+                + '}';
+    }
 }

@@ -16,4 +16,9 @@ public class Button extends Material {
 
     public Button() {
     }
+
+    @Override
+    public String toString() {
+        return "Button{" + super.toString() + '}';
+    }
 }

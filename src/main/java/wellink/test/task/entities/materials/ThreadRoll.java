@@ -35,4 +35,13 @@ public class ThreadRoll extends Material {
 
     public ThreadRoll() {
     }
+
+    @Override
+    public String toString() {
+        return "ThreadRoll{"
+                + super.toString()
+                + "threadDensity=" + threadDensity
+                + ", threadLength=" + threadLength
+                + '}';
+    }
 }

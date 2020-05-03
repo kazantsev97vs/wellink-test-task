@@ -29,4 +29,11 @@ public abstract class Material {
 
     private Color color;
 
+    @Override
+    public String toString() {
+        return "id=" + id
+                + ", name='" + name + '\''
+                + ", price=" + price
+                + ", color=" + color;
+    }
 }

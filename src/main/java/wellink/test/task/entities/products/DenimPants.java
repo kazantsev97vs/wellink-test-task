@@ -57,4 +57,15 @@ public class DenimPants extends Clothes {
         this.closureType = closureType;
         this.isInsulated = isInsulated;
     }
+
+    @Override
+    public String toString() {
+        return "DenimPants{"
+                + super.toString()
+                + ", isSkinny=" + isSkinny
+                + ", isStretch=" + isStretch
+                + ", closureType=" + closureType
+                + ", isInsulated=" + isInsulated
+                + '}';
+    }
 }

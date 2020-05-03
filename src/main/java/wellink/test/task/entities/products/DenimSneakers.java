@@ -49,4 +49,14 @@ public class DenimSneakers extends Clothes {
         this.soleThickness = soleThickness;
         this.isInsulated = isInsulated;
     }
+
+    @Override
+    public String toString() {
+        return "DenimSneakers{"
+                + super.toString()
+                + ", closureType=" + closureType
+                + ", soleThickness=" + soleThickness
+                + ", isInsulated=" + isInsulated
+                + '}';
+    }
 }

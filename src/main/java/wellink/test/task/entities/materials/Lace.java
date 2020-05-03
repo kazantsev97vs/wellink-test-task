@@ -35,4 +35,13 @@ public class Lace extends Material {
     public Lace() {
     }
 
+    @Override
+    public String toString() {
+        return "Lace{"
+                + super.toString()
+                + ", length=" + length
+                + ", density=" + density
+                + '}';
+    }
+
 }
