@@ -19,6 +19,8 @@ public class DenimSneakers extends Clothes {
 
     private Boolean isInsulated;
 
+    private Stiffness stiffness;
+
     public DenimSneakers() {
     }
 
@@ -26,28 +28,36 @@ public class DenimSneakers extends Clothes {
         super(id, name, price, color);
     }
 
-    public DenimSneakers(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
+    public DenimSneakers(Long id, String name, Double price, Color color, Size size,
+                         Density density, Gender forWhatGender, Age forWhatAge) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
     }
 
-    public DenimSneakers(ClosureType closureType, ShoeSole.SoleThickness soleThickness, Boolean isInsulated) {
+    public DenimSneakers(ClosureType closureType, ShoeSole.SoleThickness soleThickness,
+                         Boolean isInsulated, Stiffness stiffness) {
         this.closureType = closureType;
         this.soleThickness = soleThickness;
         this.isInsulated = isInsulated;
+        this.stiffness = stiffness;
     }
 
-    public DenimSneakers(Long id, String name, Double price, Color color, ClosureType closureType, ShoeSole.SoleThickness soleThickness, Boolean isInsulated) {
+    public DenimSneakers(Long id, String name, Double price, Color color, ClosureType closureType,
+                         ShoeSole.SoleThickness soleThickness, Boolean isInsulated, Stiffness stiffness) {
         super(id, name, price, color);
         this.closureType = closureType;
         this.soleThickness = soleThickness;
         this.isInsulated = isInsulated;
+        this.stiffness = stiffness;
     }
 
-    public DenimSneakers(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge, ClosureType closureType, ShoeSole.SoleThickness soleThickness, Boolean isInsulated) {
+    public DenimSneakers(Long id, String name, Double price, Color color, Size size, Density density,
+                         Gender forWhatGender, Age forWhatAge, ClosureType closureType,
+                         ShoeSole.SoleThickness soleThickness, Boolean isInsulated, Stiffness stiffness) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
         this.closureType = closureType;
         this.soleThickness = soleThickness;
         this.isInsulated = isInsulated;
+        this.stiffness = stiffness;
     }
 
     @Override

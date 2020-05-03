@@ -1,13 +1,16 @@
 package wellink.test.task.services.impl.products;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import wellink.test.task.entities.Log;
 import wellink.test.task.entities.products.DenimJacket;
+import wellink.test.task.entities.products.Products;
 import wellink.test.task.enums.*;
 import wellink.test.task.repositories.products.DenimJacketRepository;
 import wellink.test.task.services.LogService;
 import wellink.test.task.services.products.DenimJacketService;
+import wellink.test.task.services.products.ProductsService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +29,15 @@ public class DenimJacketServiceImpl implements DenimJacketService {
     @Autowired
     private LogService logService;
 
+    @Autowired
+    ProductsService productsService;
+
     @Override
     public DenimJacket save(DenimJacket entity) {
 
         DenimJacket savedDenimJacket = denimJacketRepository.save(entity);
         logService.info(entity, Log.Action.SAVE);
+        productsService.save(new Products(0L, 1L, 0L, 0L));
 
         return savedDenimJacket;
     }
@@ -41,6 +48,7 @@ public class DenimJacketServiceImpl implements DenimJacketService {
 
         denimJacketRepository.saveAll(entities).forEach(list::add);
         logService.info(entities, Log.Action.SAVE);
+        productsService.save(new Products(0L, (long)entities.size(), 0L, 0L));
 
         return list;
     }
@@ -82,6 +90,8 @@ public class DenimJacketServiceImpl implements DenimJacketService {
         }
 
         logService.info(TYPE + " id = " + id + " was deleted", TYPE, Log.Action.DELETE);
+        productsService.save(new Products(0L, -1L, 0L, 0L));
+
         return true;
     }
 
@@ -95,6 +105,25 @@ public class DenimJacketServiceImpl implements DenimJacketService {
         }
 
         logService.info(TYPE + " id = " + entity.getId() + " was deleted", TYPE, Log.Action.DELETE);
+        productsService.save(new Products(0L, -1L, 0L, 0L));
+        return true;
+    }
+
+    @Override
+    public Boolean deleteAll(List<DenimJacket> entities) {
+        denimJacketRepository.deleteAll(entities);
+        List<Long> idList = new ArrayList<>();
+
+        for (DenimJacket entity : entities) {
+            if (getById(entity.getId()) != null) {
+                logService.error("Failed to delete " + TYPE + " id = " + entity.getId(), TYPE, Log.Action.DELETE);
+                return false;
+            }
+            idList.add(entity.getId());
+        }
+
+        logService.info(TYPE + " ids = " + idList + " were deleted", TYPE, Log.Action.DELETE);
+        productsService.save(new Products(0L, -(long)entities.size(), 0L, 0L));
         return true;
     }
 
@@ -113,6 +142,10 @@ public class DenimJacketServiceImpl implements DenimJacketService {
         return denimJacketRepository.getAllByColor(color);
     }
 
+    @Override
+    public List<DenimJacket> getAllByColor(Color color, Pageable page) {
+        return denimJacketRepository.getAllByColor(color, page);
+    }
 
     @Override
     public List<DenimJacket> findAllBySize(Size size) {

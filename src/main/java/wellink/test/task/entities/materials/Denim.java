@@ -3,7 +3,9 @@ package wellink.test.task.entities.materials;
 import lombok.Data;
 import wellink.test.task.enums.Color;
 import wellink.test.task.enums.Density;
+import wellink.test.task.enums.Stiffness;
 import wellink.test.task.models.Material;
+
 import javax.persistence.Entity;
 
 /**
@@ -15,17 +17,21 @@ public class Denim extends Material {
 
     private Density density;
 
+    private Stiffness stiffness;
+
     public Denim(Long id, String name, Double price, Color color) {
         super(id, name, price, color);
     }
 
-    public Denim(Long id, String name, Double price, Color color, Density density) {
+    public Denim(Long id, String name, Double price, Color color, Density density, Stiffness stiffness) {
         super(id, name, price, color);
         this.density = density;
+        this.stiffness = stiffness;
     }
 
-    public Denim(Density density) {
+    public Denim(Density density, Stiffness stiffness) {
         this.density = density;
+        this.stiffness = stiffness;
     }
 
     public Denim() {
@@ -36,6 +42,7 @@ public class Denim extends Material {
         return "Denim{"
                 + super.toString()
                 + ", density=" + density
+                + ", stiffness=" + stiffness
                 + '}';
     }
 }

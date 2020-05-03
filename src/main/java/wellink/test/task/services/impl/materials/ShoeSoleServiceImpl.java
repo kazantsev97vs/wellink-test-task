@@ -1,12 +1,15 @@
 package wellink.test.task.services.impl.materials;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import wellink.test.task.entities.Log;
+import wellink.test.task.entities.materials.Materials;
 import wellink.test.task.entities.materials.ShoeSole;
 import wellink.test.task.enums.Color;
 import wellink.test.task.repositories.materials.ShoeSoleRepository;
 import wellink.test.task.services.LogService;
+import wellink.test.task.services.materials.MaterialsService;
 import wellink.test.task.services.materials.ShoeSoleService;
 
 import java.util.ArrayList;
@@ -26,11 +29,15 @@ public class ShoeSoleServiceImpl implements ShoeSoleService {
     @Autowired
     private LogService logService;
 
+    @Autowired
+    MaterialsService materialsService;
+
     @Override
     public ShoeSole save(ShoeSole entity) {
 
         ShoeSole savedShoeSole = shoeSoleRepository.save(entity);
         logService.info(entity, Log.Action.SAVE);
+        materialsService.save(new Materials(0L, 0L, 0L, 0L, 1L, 0L));
 
         return savedShoeSole;
     }
@@ -41,6 +48,7 @@ public class ShoeSoleServiceImpl implements ShoeSoleService {
 
         shoeSoleRepository.saveAll(entities).forEach(list::add);
         logService.info(entities, Log.Action.SAVE);
+        materialsService.save(new Materials(0L, 0L, 0L, 0L, (long)entities.size(), 0L));
 
         return list;
     }
@@ -82,6 +90,8 @@ public class ShoeSoleServiceImpl implements ShoeSoleService {
         }
 
         logService.info(TYPE + " id = " + id + " was deleted", TYPE, Log.Action.DELETE);
+        materialsService.save(new Materials(0L, 0L, 0L, 0L, -1L, 0L));
+
         return true;
     }
 
@@ -95,6 +105,27 @@ public class ShoeSoleServiceImpl implements ShoeSoleService {
         }
 
         logService.info(TYPE + " id = " + entity.getId() + " was deleted", TYPE, Log.Action.DELETE);
+        materialsService.save(new Materials(0L, 0L, 0L, 0L, -1L, 0L));
+
+        return true;
+    }
+
+    @Override
+    public Boolean deleteAll(List<ShoeSole> entities) {
+        shoeSoleRepository.deleteAll(entities);
+        List<Long> idList = new ArrayList<>();
+
+        for (ShoeSole entity : entities) {
+            if (getById(entity.getId()) != null) {
+                logService.error("Failed to delete " + TYPE + " id = " + entity.getId(), TYPE, Log.Action.DELETE);
+                return false;
+            }
+            idList.add(entity.getId());
+        }
+
+        logService.info(TYPE + " ids = " + idList + " were deleted", TYPE, Log.Action.DELETE);
+        materialsService.save(new Materials(0L, 0L, 0L, 0L, -(long)entities.size(), 0L));
+
         return true;
     }
 
@@ -111,6 +142,11 @@ public class ShoeSoleServiceImpl implements ShoeSoleService {
     @Override
     public List<ShoeSole> getAllByColor(Color color) {
         return shoeSoleRepository.getAllByColor(color);
+    }
+
+    @Override
+    public List<ShoeSole> getAllByColor(Color color, Pageable page) {
+        return shoeSoleRepository.getAllByColor(color, page);
     }
 
     @Override

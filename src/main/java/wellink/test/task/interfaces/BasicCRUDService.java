@@ -15,9 +15,13 @@ public interface BasicCRUDService <T> {
 
     List<T> getAll();
 
+//    List<T> getAll(Pageable page);
+
     T update(T entity);
 
     Boolean deleteById(Long id);
 
     Boolean delete(T entity);
+
+    Boolean deleteAll(List<T> entities);
 }

@@ -1,13 +1,16 @@
 package wellink.test.task.services.impl.materials;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import wellink.test.task.entities.Log;
 import wellink.test.task.entities.materials.Button;
+import wellink.test.task.entities.materials.Materials;
 import wellink.test.task.enums.Color;
 import wellink.test.task.repositories.materials.ButtonRepository;
 import wellink.test.task.services.LogService;
 import wellink.test.task.services.materials.ButtonService;
+import wellink.test.task.services.materials.MaterialsService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +29,15 @@ public class ButtonServiceImpl implements ButtonService {
     @Autowired
     private LogService logService;
 
+    @Autowired
+    private MaterialsService materialsService;
+
     @Override
     public Button save(Button entity) {
 
         Button savedButton = buttonRepository.save(entity);
         logService.info(entity, Log.Action.SAVE);
+        materialsService.save(new Materials(1L, 0L, 0L, 0L, 0L, 0L));
 
         return savedButton;
     }
@@ -41,6 +48,7 @@ public class ButtonServiceImpl implements ButtonService {
 
         buttonRepository.saveAll(entities).forEach(list::add);
         logService.info(entities, Log.Action.SAVE);
+        materialsService.save(new Materials((long) entities.size(), 0L, 0L, 0L, 0L, 0L));
 
         return list;
     }
@@ -82,6 +90,8 @@ public class ButtonServiceImpl implements ButtonService {
         }
 
         logService.info(TYPE + " id = " + id + " was deleted", TYPE, Log.Action.DELETE);
+        materialsService.save(new Materials(-1L, 0L, 0L, 0L, 0L, 0L));
+
         return true;
     }
 
@@ -95,6 +105,27 @@ public class ButtonServiceImpl implements ButtonService {
         }
 
         logService.info(TYPE + " id = " + entity.getId() + " was deleted", TYPE, Log.Action.DELETE);
+        materialsService.save(new Materials(-1L, 0L, 0L, 0L, 0L, 0L));
+
+        return true;
+    }
+
+    @Override
+    public Boolean deleteAll(List<Button> entities) {
+        buttonRepository.deleteAll(entities);
+        List<Long> idList = new ArrayList<>();
+
+        for (Button entity : entities) {
+            if (getById(entity.getId()) != null) {
+                logService.error("Failed to delete " + TYPE + " id = " + entity.getId(), TYPE, Log.Action.DELETE);
+                return false;
+            }
+            idList.add(entity.getId());
+        }
+
+        logService.info(TYPE + " ids = " + idList + " were deleted", TYPE, Log.Action.DELETE);
+        materialsService.save(new Materials( (long)entities.size() * -1, 0L, 0L, 0L, 0L, 0L));
+
         return true;
     }
 
@@ -113,4 +144,8 @@ public class ButtonServiceImpl implements ButtonService {
         return buttonRepository.getAllByColor(color);
     }
 
+    @Override
+    public List<Button> getAllByColor(Color color, Pageable page) {
+        return buttonRepository.getAllByColor(color, page);
+    }
 }

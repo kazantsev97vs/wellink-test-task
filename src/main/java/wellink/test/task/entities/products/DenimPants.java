@@ -11,6 +11,11 @@ import javax.persistence.Entity;
 public class DenimPants extends Clothes {
 
     /**
+     * Количество карманов
+     */
+    private Integer pocketsNumber;
+
+    /**
      * Зауженные штаны
      */
     private Boolean isSkinny;
@@ -31,27 +36,35 @@ public class DenimPants extends Clothes {
         super(id, name, price, color);
     }
 
-    public DenimPants(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge) {
+    public DenimPants(Long id, String name, Double price, Color color, Size size,
+                      Density density, Gender forWhatGender, Age forWhatAge) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
     }
 
-    public DenimPants(Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
+    public DenimPants(Integer pocketsNumber, Boolean isSkinny, Boolean isStretch,
+                      ClosureType closureType, Boolean isInsulated) {
+        this.pocketsNumber = pocketsNumber;
         this.isSkinny = isSkinny;
         this.isStretch = isStretch;
         this.closureType = closureType;
         this.isInsulated = isInsulated;
     }
 
-    public DenimPants(Long id, String name, Double price, Color color, Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
+    public DenimPants(Long id, String name, Double price, Color color, Integer pocketsNumber,
+                      Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
         super(id, name, price, color);
+        this.pocketsNumber = pocketsNumber;
         this.isSkinny = isSkinny;
         this.isStretch = isStretch;
         this.closureType = closureType;
         this.isInsulated = isInsulated;
     }
 
-    public DenimPants(Long id, String name, Double price, Color color, Size size, Density density, Gender forWhatGender, Age forWhatAge, Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
+    public DenimPants(Long id, String name, Double price, Color color, Size size, Density density,
+                      Gender forWhatGender, Age forWhatAge, Integer pocketsNumber, Boolean isSkinny,
+                      Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
         super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        this.pocketsNumber = pocketsNumber;
         this.isSkinny = isSkinny;
         this.isStretch = isStretch;
         this.closureType = closureType;
