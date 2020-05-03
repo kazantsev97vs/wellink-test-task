@@ -1,7 +1,5 @@
 package wellink.test.task.entities.products;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import wellink.test.task.enums.*;
 import wellink.test.task.models.Clothes;
 import javax.persistence.Entity;

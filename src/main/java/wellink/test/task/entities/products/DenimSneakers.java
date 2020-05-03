@@ -1,8 +1,6 @@
 package wellink.test.task.entities.products;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import wellink.test.task.entities.materials.ShoeSole;
 import wellink.test.task.enums.*;
 import wellink.test.task.models.Clothes;
