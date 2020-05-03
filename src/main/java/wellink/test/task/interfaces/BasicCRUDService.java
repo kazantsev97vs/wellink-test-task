@@ -9,6 +9,8 @@ public interface BasicCRUDService <T> {
 
     T save(T entity);
 
+    List<T> saveAll(List<T> entities);
+
     T getById(Long id);
 
     List<T> getAll();
