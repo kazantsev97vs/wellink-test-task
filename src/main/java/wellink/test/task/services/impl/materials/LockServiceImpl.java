@@ -3,78 +3,78 @@ package wellink.test.task.services.impl.materials;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wellink.test.task.entities.Log;
-import wellink.test.task.entities.materials.Button;
+import wellink.test.task.entities.materials.Lock;
 import wellink.test.task.enums.Color;
-import wellink.test.task.repositories.materials.ButtonRepository;
+import wellink.test.task.repositories.materials.LockRepository;
 import wellink.test.task.services.LogService;
-import wellink.test.task.services.materials.ButtonService;
+import wellink.test.task.services.materials.LockService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Реализация CRUD-сервиса для работы с материалом "пуговица"
+ * Реализация CRUD-сервиса для работы с материалом "замок"
  */
 @Service
-public class ButtonServiceImpl implements ButtonService {
+public class LockServiceImpl implements LockService {
 
-    private final String TYPE = Button.class.getSimpleName();
+    private final String TYPE = Lock.class.getSimpleName();
 
     @Autowired
-    private ButtonRepository buttonRepository;
+    private LockRepository lockRepository;
 
     @Autowired
     private LogService logService;
 
     @Override
-    public Button save(Button entity) {
+    public Lock save(Lock entity) {
 
-        Button savedButton = buttonRepository.save(entity);
+        Lock savedLock = lockRepository.save(entity);
         logService.info(entity, Log.Action.SAVE);
 
-        return savedButton;
+        return savedLock;
     }
 
     @Override
-    public List<Button> saveAll(List<Button> entities) {
-        List<Button> list = new ArrayList<>();
+    public List<Lock> saveAll(List<Lock> entities) {
+        List<Lock> list = new ArrayList<>();
 
-        buttonRepository.saveAll(entities).forEach(list::add);
+        lockRepository.saveAll(entities).forEach(list::add);
         logService.info(entities, Log.Action.SAVE);
 
         return list;
     }
 
     @Override
-    public Button getById(Long id) {
-        return buttonRepository.findById(id).orElse(null);
+    public Lock getById(Long id) {
+        return lockRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Button> getAll() {
-        List<Button> list = new ArrayList<>();
+    public List<Lock> getAll() {
+        List<Lock> list = new ArrayList<>();
 
-        buttonRepository.findAll().forEach(list::add);
+        lockRepository.findAll().forEach(list::add);
 
         return list;
     }
 
     @Override
-    public Button update(Button entity) {
+    public Lock update(Lock entity) {
         if (getById(entity.getId()) == null) {
             logService.error("Failed to update - " + TYPE + " does not have id", TYPE, Log.Action.UPDATE);
             return null;
         }
 
-        Button updatedButton = buttonRepository.save(entity);
+        Lock updatedLock = lockRepository.save(entity);
         logService.info(entity, Log.Action.UPDATE);
 
-        return updatedButton;
+        return updatedLock;
     }
 
     @Override
     public Boolean deleteById(Long id) {
-        buttonRepository.deleteById(id);
+        lockRepository.deleteById(id);
 
         if (getById(id) != null) {
             logService.error("Failed to delete " + TYPE + " id = " + id, TYPE, Log.Action.DELETE);
@@ -86,8 +86,8 @@ public class ButtonServiceImpl implements ButtonService {
     }
 
     @Override
-    public Boolean delete(Button entity) {
-        buttonRepository.delete(entity);
+    public Boolean delete(Lock entity) {
+        lockRepository.delete(entity);
 
         if (getById(entity.getId()) != null) {
             logService.error("Failed to delete " + TYPE + " id = " + entity.getId(), TYPE, Log.Action.DELETE);
@@ -99,18 +99,18 @@ public class ButtonServiceImpl implements ButtonService {
     }
 
     @Override
-    public List<Button> getAllByName(String name) {
-        return buttonRepository.getAllByName(name);
+    public List<Lock> getAllByName(String name) {
+        return lockRepository.getAllByName(name);
     }
 
     @Override
-    public List<Button> getAllByPrice(Double price) {
-        return buttonRepository.getAllByPrice(price);
+    public List<Lock> getAllByPrice(Double price) {
+        return lockRepository.getAllByPrice(price);
     }
 
     @Override
-    public List<Button> getAllByColor(Color color) {
-        return buttonRepository.getAllByColor(color);
+    public List<Lock> getAllByColor(Color color) {
+        return lockRepository.getAllByColor(color);
     }
 
 }
