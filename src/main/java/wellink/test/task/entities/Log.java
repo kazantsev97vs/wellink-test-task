@@ -3,7 +3,10 @@ package wellink.test.task.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -15,6 +18,9 @@ import java.util.Date;
 public class Log {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
     @NotNull
     private Date date;
 
@@ -27,6 +33,14 @@ public class Log {
     private String type;
 
     private Action action;
+
+    public Log(@NotNull Date date, @NotNull Status status, @NotNull String message, String type, Action action) {
+        this.date = date;
+        this.status = status;
+        this.message = message;
+        this.type = type;
+        this.action = action;
+    }
 
     public void setType(String type) {
         this.type = type;

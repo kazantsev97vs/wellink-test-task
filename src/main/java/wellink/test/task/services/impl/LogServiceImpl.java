@@ -19,9 +19,40 @@ public class LogServiceImpl implements LogService {
     @Autowired
     private LogRepository logRepository;
 
+
+    @Override
+    public Log info(String message, String type, Log.Action action) {
+        return save(new Log(new Date(), Log.Status.INFO, message, type, action));
+    }
+
+    @Override
+    public Log info(String message, Object object, Log.Action action) {
+        return save(new Log(new Date(), Log.Status.INFO, message, object.getClass().getSimpleName(), action));
+    }
+
+    @Override
+    public Log info(Object object, Log.Action action) {
+        return save(new Log(new Date(), Log.Status.INFO, object.toString(), object.getClass().getSimpleName(), action));
+    }
+
+    @Override
+    public Log error(String message, String type, Log.Action action) {
+        return save(new Log(new Date(), Log.Status.ERROR, message, type, action));
+    }
+
+
     @Override
     public Log save(Log log) {
         return logRepository.save(log);
+    }
+
+    @Override
+    public List<Log> saveAll(List<Log> entities) {
+        List<Log> logList = new ArrayList<>();
+
+        logRepository.saveAll(entities).forEach(logList::add);
+
+        return logList;
     }
 
     @Override
@@ -30,8 +61,8 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public Log getById(Long fastTime) {
-        return getByDate(new Date(fastTime));
+    public Log getById(Long id) {
+        return logRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -102,19 +133,15 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public Boolean deleteByDate(Date date) {
-        logRepository.deleteById(date);
-        return logRepository.getByDate(date) == null;
-    }
-
-    @Override
-    public Boolean deleteById(Long fastTime) {
-        return deleteByDate(new Date(fastTime));
+    public Boolean deleteById(Long id) {
+        logRepository.deleteById(id);
+        return getById(id) == null;
     }
 
     @Override
     public Boolean delete(Log log) {
         logRepository.delete(log);
-        return logRepository.getByDate(log.getDate()) == null;
+        return getById(log.getId()) == null;
     }
+
 }
