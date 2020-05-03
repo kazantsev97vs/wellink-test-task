@@ -11,7 +11,7 @@ import java.util.List;
  * Описывает методы репозитория сущности расширяющей класс Clothes,
  * @param <T> - тип сущности
  */
-public interface BasicClothesRepository <T> extends BasicMaterialRepository <T> {
+public interface BasicSearchClothesMethods<T> extends BasicSearchMaterialMethods<T> {
 
     List<T> findAllBySize(Size size);
 

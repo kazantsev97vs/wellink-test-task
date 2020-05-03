@@ -8,7 +8,7 @@ import java.util.List;
  * Описывает методы репозитория сущности расширяющей класс Material
  * @param <T> - тип сущности
  */
-public interface BasicMaterialRepository<T> {
+public interface BasicSearchMaterialMethods<T> {
 
     List<T> getAllByName(String name);
 
