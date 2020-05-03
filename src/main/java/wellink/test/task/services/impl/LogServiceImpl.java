@@ -40,7 +40,6 @@ public class LogServiceImpl implements LogService {
         return save(new Log(new Date(), Log.Status.ERROR, message, type, action));
     }
 
-
     @Override
     public Log save(Log log) {
         return logRepository.save(log);

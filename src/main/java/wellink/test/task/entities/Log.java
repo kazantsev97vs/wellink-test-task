@@ -66,10 +66,6 @@ public class Log {
 
     @Override
     public String toString() {
-        return "date=" + date
-                + ",\n status=" + status
-                + ",\n message='" + message + '\''
-                + ",\n type='" + type + '\''
-                + ",\n action=" + action + '\n';
+        return date + "  " +  status + "  " + message + "  " + type + "  " + action;
     }
 }
