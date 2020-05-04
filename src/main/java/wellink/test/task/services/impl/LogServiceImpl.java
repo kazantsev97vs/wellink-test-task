@@ -65,6 +65,17 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
+    public Boolean deleteAll(List<Log> entities) {
+        logRepository.deleteAll(entities);
+
+        for (Log entity : entities) {
+            if (getById(entity.getId()) != null) return false;
+        }
+
+        return true;
+    }
+
+    @Override
     public Log getFirstByDateAfter(Date date) {
         return logRepository.getFirstByDateAfter(date);
     }
