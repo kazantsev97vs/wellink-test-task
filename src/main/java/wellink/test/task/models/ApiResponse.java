@@ -14,4 +14,12 @@ public class ApiResponse <T> {
     private String message;
 
     private T content;
+
+    @Override
+    public String toString() {
+        return "ApiResponse:" +
+                "\nstatus: " + status +
+                ",\nmessage: " + message +
+                ",\ncontent: " + content;
+    }
 }
