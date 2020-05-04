@@ -12,17 +12,29 @@ import wellink.test.task.services.products.ProductsService;
 @Service
 public class ProductsServiceImpl implements ProductsService {
 
+    private final Long ID = 1L;
+
     @Autowired
     private ProductsRepository productsRepository;
 
     @Override
     public Products save(Products products) {
+        products.setId(ID);
+        Products savedProducts = get();
+
+        if (savedProducts != null) {
+            products.setDenimCaps(products.getDenimCaps() + savedProducts.getDenimCaps());
+            products.setDenimJackets(products.getDenimJackets() + savedProducts.getDenimJackets());
+            products.setDenimPants(products.getDenimPants() + savedProducts.getDenimPants());
+            products.setDenimSneakers(products.getDenimSneakers() + savedProducts.getDenimSneakers());
+        }
+
         return productsRepository.save(products);
     }
 
     @Override
-    public Products getById(Long id) {
-        return productsRepository.findById(id).orElse(null);
+    public Products get() {
+        return productsRepository.findById(ID).orElse(null);
     }
 
     @Override

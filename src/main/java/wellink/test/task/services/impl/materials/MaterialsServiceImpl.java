@@ -20,7 +20,7 @@ public class MaterialsServiceImpl implements MaterialsService {
     @Override
     public Materials save(Materials materials) {
         materials.setId(ID);
-        Materials savedMaterials = getById(ID);
+        Materials savedMaterials = get();
 
         if (savedMaterials != null) {
             materials.setButtons(materials.getButtons() + savedMaterials.getButtons());
@@ -35,7 +35,7 @@ public class MaterialsServiceImpl implements MaterialsService {
     }
 
     @Override
-    public Materials getById(Long id) {
+    public Materials get() {
         return materialsRepository.findById(ID).orElse(null);
     }
 

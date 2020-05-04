@@ -20,13 +20,13 @@ public class Products {
     private Long id;
 
     private Long denimCaps;
-    private Long denimJacket;
+    private Long denimJackets;
     private Long denimPants;
     private Long denimSneakers;
 
-    public Products(Long denimCaps, Long denimJacket, Long denimPants, Long denimSneakers) {
+    public Products(Long denimCaps, Long denimJackets, Long denimPants, Long denimSneakers) {
         this.denimCaps = denimCaps;
-        this.denimJacket = denimJacket;
+        this.denimJackets = denimJackets;
         this.denimPants = denimPants;
         this.denimSneakers = denimSneakers;
     }
@@ -34,8 +34,8 @@ public class Products {
     @Override
     public String toString() {
         return "denimCaps=" + denimCaps
-                + ", denimJacket=" + denimJacket
+                + ", denimJacket=" + denimJackets
                 + ", denimPants=" + denimPants
-                + ", denimSneakers=" + denimSneakers + "\n";
+                + ", denimSneakers=" + denimSneakers;
     }
 }

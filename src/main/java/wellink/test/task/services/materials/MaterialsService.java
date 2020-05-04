@@ -9,7 +9,7 @@ public interface MaterialsService {
 
     Materials save(Materials materials);
 
-    Materials getById(Long id);
+    Materials get();
 
     Materials update(Materials materials);
 

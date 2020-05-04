@@ -9,7 +9,7 @@ public interface ProductsService {
 
     Products save(Products products);
 
-    Products getById(Long id);
+    Products get();
 
     Products update(Products products);
 

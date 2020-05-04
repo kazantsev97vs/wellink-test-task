@@ -42,6 +42,6 @@ public class Materials {
                 + ", laces=" + laces
                 + ", locks=" + locks
                 + ", shoeSoles=" + shoeSoles
-                + ", threadRolls=" + threadRolls + "\n";
+                + ", threadRolls=" + threadRolls;
     }
 }
