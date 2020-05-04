@@ -6,6 +6,9 @@ import wellink.test.task.entities.products.DenimJacket;
 import wellink.test.task.entities.products.DenimPants;
 import wellink.test.task.entities.products.DenimSneakers;
 import wellink.test.task.enums.*;
+import wellink.test.task.models.Material;
+
+import java.util.List;
 
 /**
  * Сервис имитирующий работу фирмы
@@ -88,6 +91,9 @@ public interface FirmService {
             Size size, Gender forWhatGender, Age forWhatAge,
             ClosureType closureType, ShoeSole.SoleThickness soleThickness, Boolean isInsulated, Stiffness stiffness
     );
+
+
+    Double countTotalPrice(List<? extends Material> materialList);
 
 
 //    /**

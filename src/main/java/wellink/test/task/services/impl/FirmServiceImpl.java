@@ -470,7 +470,7 @@ public class FirmServiceImpl implements FirmService {
         return map;
     }
 
-    private Double countTotalPrice(List<? extends Material> materialList) {
+    public Double countTotalPrice(List<? extends Material> materialList) {
         double price = 0;
 
         for (Material material : materialList) { price += material.getPrice(); }
