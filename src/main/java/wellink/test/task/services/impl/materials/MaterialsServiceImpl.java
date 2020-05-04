@@ -24,11 +24,11 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         if (savedMaterials != null) {
             materials.setButtons(materials.getButtons() + savedMaterials.getButtons());
-            materials.setButtons(materials.getDenims() + savedMaterials.getDenims());
-            materials.setButtons(materials.getLaces() + savedMaterials.getLaces());
-            materials.setButtons(materials.getLocks() + savedMaterials.getLocks());
-            materials.setButtons(materials.getShoeSoles() + savedMaterials.getShoeSoles());
-            materials.setButtons(materials.getThreadRolls() + savedMaterials.getThreadRolls());
+            materials.setDenims(materials.getDenims() + savedMaterials.getDenims());
+            materials.setLaces(materials.getLaces() + savedMaterials.getLaces());
+            materials.setLocks(materials.getLocks() + savedMaterials.getLocks());
+            materials.setShoeSoles(materials.getShoeSoles() + savedMaterials.getShoeSoles());
+            materials.setThreadRolls(materials.getThreadRolls() + savedMaterials.getThreadRolls());
         }
 
         return materialsRepository.save(materials);
