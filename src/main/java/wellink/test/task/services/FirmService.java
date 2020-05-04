@@ -6,7 +6,10 @@ import wellink.test.task.entities.products.DenimJacket;
 import wellink.test.task.entities.products.DenimPants;
 import wellink.test.task.entities.products.DenimSneakers;
 import wellink.test.task.enums.*;
+import wellink.test.task.interfaces.BasicCRUDService;
+import wellink.test.task.models.Clothes;
 import wellink.test.task.models.Material;
+import wellink.test.task.models.SoldGoods;
 
 import java.util.List;
 
@@ -94,6 +97,10 @@ public interface FirmService {
 
 
     Double countTotalPrice(List<? extends Material> materialList);
+
+    <C extends Clothes, S> List<C> checkProducts(List<C> clothes, BasicCRUDService<S> service);
+
+    <C extends Clothes, S> SoldGoods<C> sellProducts(List<C> clothes, BasicCRUDService<S> service);
 
 
 //    /**

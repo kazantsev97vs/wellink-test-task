@@ -9,7 +9,10 @@ import wellink.test.task.entities.products.DenimJacket;
 import wellink.test.task.entities.products.DenimPants;
 import wellink.test.task.entities.products.DenimSneakers;
 import wellink.test.task.enums.*;
+import wellink.test.task.interfaces.BasicCRUDService;
+import wellink.test.task.models.Clothes;
 import wellink.test.task.models.Material;
+import wellink.test.task.models.SoldGoods;
 import wellink.test.task.services.FirmService;
 import wellink.test.task.services.LogService;
 import wellink.test.task.services.materials.*;
@@ -77,7 +80,7 @@ public class FirmServiceImpl implements FirmService {
                 && threadRollService.deleteAll(threadRollList)
                 && ((map.size() == 3) && (buttonService.deleteAll(buttonList)) || map.size() == 2)
         ) {
-            DenimCap denimCap = new DenimCap(null, name, price, color, size, Density.HIGH, forWhatGender, forWhatAge);
+            DenimCap denimCap = new DenimCap(name, price, color, size, Density.HIGH, forWhatGender, forWhatAge);
             denimCapService.save(denimCap);
 
             return denimCap;
@@ -121,7 +124,7 @@ public class FirmServiceImpl implements FirmService {
 
         if (denimListIsDeleted && threadRollListIsDeleted && buttonListIsDeleted && laceListIsDeleted && lockListIsDeleted) {
 
-            DenimJacket denimJacket = new DenimJacket(null, name, price, color, size, Density.HIGH, forWhatGender,
+            DenimJacket denimJacket = new DenimJacket(name, price, color, size, Density.HIGH, forWhatGender,
                     forWhatAge, hasHood, pocketsNumber, sleeveLength, isInsulated, closureType);
             denimJacketService.save(denimJacket);
 
@@ -161,7 +164,7 @@ public class FirmServiceImpl implements FirmService {
 
         if (denimListIsDeleted && threadRollListIsDeleted && buttonListIsDeleted && lockListIsDeleted) {
 
-            DenimPants denimPants = new DenimPants(null, name, price, color, size, Density.HIGH, forWhatGender,
+            DenimPants denimPants = new DenimPants(name, price, color, size, Density.HIGH, forWhatGender,
                     forWhatAge, pocketsNumber, isSkinny, isStretch, closureType, isInsulated);
             denimPantsService.save(denimPants);
 
@@ -205,7 +208,7 @@ public class FirmServiceImpl implements FirmService {
 
         if (denimListIsDeleted && threadRollListIsDeleted && shoeSoleListIsDeleted && buttonListIsDeleted && lockListIsDeleted) {
 
-            DenimSneakers denimSneakers = new DenimSneakers(null, name, price, color, size, Density.HIGH, forWhatGender,
+            DenimSneakers denimSneakers = new DenimSneakers(name, price, color, size, Density.HIGH, forWhatGender,
                     forWhatAge, closureType, soleThickness, isInsulated, stiffness);
             denimSneakersService.save(denimSneakers);
 
@@ -476,5 +479,32 @@ public class FirmServiceImpl implements FirmService {
         for (Material material : materialList) { price += material.getPrice(); }
 
         return price;
+    }
+
+    public <C extends Clothes, S> List<C> checkProducts (List<C> clothes, BasicCRUDService<S> service) {
+        List<C> list = new ArrayList<>();
+
+        for (C c : clothes) {
+            C foundedClothes = (C) service.getById(c.getId());
+            if (foundedClothes == null) return null;
+            list.add(foundedClothes);
+        }
+
+        return list;
+    }
+
+    public <C extends Clothes, S> SoldGoods<C> sellProducts(List<C> clothes, BasicCRUDService<S> service) {
+
+        List<S> list = (List<S>) checkProducts(clothes, service);
+
+        if (list == null) return null;
+
+        Double price = countTotalPrice((List<? extends Material>) list);
+
+        boolean isDeleted = service.deleteAll(list);
+
+        if (!isDeleted) return null;
+
+        return new SoldGoods<C>(price, (List<C>) list);
     }
 }
