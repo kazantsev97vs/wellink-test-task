@@ -29,6 +29,12 @@ public abstract class Material {
 
     private Color color;
 
+    public Material(String name, Double price, Color color) {
+        this.name = name;
+        this.price = price;
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "id=" + id

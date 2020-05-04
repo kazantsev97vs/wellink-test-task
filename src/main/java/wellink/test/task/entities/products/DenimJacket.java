@@ -38,13 +38,13 @@ public class DenimJacket extends Clothes {
     public DenimJacket() {
     }
 
-    public DenimJacket(Long id, String name, Double price, Color color) {
-        super(id, name, price, color);
+    public DenimJacket(String name, Double price, Color color) {
+        super(name, price, color);
     }
 
-    public DenimJacket(Long id, String name, Double price, Color color, Size size,
+    public DenimJacket(String name, Double price, Color color, Size size,
                        Density density, Gender forWhatGender, Age forWhatAge) {
-        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        super(name, price, color, size, density, forWhatGender, forWhatAge);
     }
 
     public DenimJacket(Boolean hasHood, Integer pocketsNumber, Integer sleeveLength,
@@ -56,9 +56,9 @@ public class DenimJacket extends Clothes {
         this.closureType = closureType;
     }
 
-    public DenimJacket(Long id, String name, Double price, Color color, Boolean hasHood, Integer pocketsNumber,
+    public DenimJacket(String name, Double price, Color color, Boolean hasHood, Integer pocketsNumber,
                        Integer sleeveLength, Boolean isInsulated, ClosureType closureType) {
-        super(id, name, price, color);
+        super(name, price, color);
         this.hasHood = hasHood;
         this.pocketsNumber = pocketsNumber;
         this.sleeveLength = sleeveLength;
@@ -66,10 +66,10 @@ public class DenimJacket extends Clothes {
         this.closureType = closureType;
     }
 
-    public DenimJacket(Long id, String name, Double price, Color color, Size size, Density density,
+    public DenimJacket(String name, Double price, Color color, Size size, Density density,
                        Gender forWhatGender, Age forWhatAge, Boolean hasHood, Integer pocketsNumber,
                        Integer sleeveLength, Boolean isInsulated, ClosureType closureType) {
-        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        super(name, price, color, size, density, forWhatGender, forWhatAge);
         this.hasHood = hasHood;
         this.pocketsNumber = pocketsNumber;
         this.sleeveLength = sleeveLength;

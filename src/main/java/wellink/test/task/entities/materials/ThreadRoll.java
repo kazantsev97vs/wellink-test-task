@@ -18,12 +18,12 @@ public class ThreadRoll extends Material {
 
     private Integer threadLength;
 
-    public ThreadRoll(Long id, String name, Double price, Color color) {
-        super(id, name, price, color);
+    public ThreadRoll(String name, Double price, Color color) {
+        super(name, price, color);
     }
 
-    public ThreadRoll(Long id, String name, Double price, Color color, Density threadDensity, Integer threadLength) {
-        super(id, name, price, color);
+    public ThreadRoll(String name, Double price, Color color, Density threadDensity, Integer threadLength) {
+        super(name, price, color);
         this.threadDensity = threadDensity;
         this.threadLength = threadLength;
     }

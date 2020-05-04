@@ -19,12 +19,12 @@ public class Denim extends Material {
 
     private Stiffness stiffness;
 
-    public Denim(Long id, String name, Double price, Color color) {
-        super(id, name, price, color);
+    public Denim(String name, Double price, Color color) {
+        super(name, price, color);
     }
 
-    public Denim(Long id, String name, Double price, Color color, Density density, Stiffness stiffness) {
-        super(id, name, price, color);
+    public Denim(String name, Double price, Color color, Density density, Stiffness stiffness) {
+        super(name, price, color);
         this.density = density;
         this.stiffness = stiffness;
     }

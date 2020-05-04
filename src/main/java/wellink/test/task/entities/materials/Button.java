@@ -14,6 +14,10 @@ public class Button extends Material {
         super(id, name, price, color);
     }
 
+    public Button(String name, Double price, Color color) {
+        super(name, price, color);
+    }
+
     public Button() {
     }
 

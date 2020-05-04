@@ -32,13 +32,13 @@ public class DenimPants extends Clothes {
     public DenimPants() {
     }
 
-    public DenimPants(Long id, String name, Double price, Color color) {
-        super(id, name, price, color);
+    public DenimPants(String name, Double price, Color color) {
+        super(name, price, color);
     }
 
-    public DenimPants(Long id, String name, Double price, Color color, Size size,
+    public DenimPants(String name, Double price, Color color, Size size,
                       Density density, Gender forWhatGender, Age forWhatAge) {
-        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        super(name, price, color, size, density, forWhatGender, forWhatAge);
     }
 
     public DenimPants(Integer pocketsNumber, Boolean isSkinny, Boolean isStretch,
@@ -50,9 +50,9 @@ public class DenimPants extends Clothes {
         this.isInsulated = isInsulated;
     }
 
-    public DenimPants(Long id, String name, Double price, Color color, Integer pocketsNumber,
+    public DenimPants(String name, Double price, Color color, Integer pocketsNumber,
                       Boolean isSkinny, Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
-        super(id, name, price, color);
+        super(name, price, color);
         this.pocketsNumber = pocketsNumber;
         this.isSkinny = isSkinny;
         this.isStretch = isStretch;
@@ -60,10 +60,10 @@ public class DenimPants extends Clothes {
         this.isInsulated = isInsulated;
     }
 
-    public DenimPants(Long id, String name, Double price, Color color, Size size, Density density,
+    public DenimPants(String name, Double price, Color color, Size size, Density density,
                       Gender forWhatGender, Age forWhatAge, Integer pocketsNumber, Boolean isSkinny,
                       Boolean isStretch, ClosureType closureType, Boolean isInsulated) {
-        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        super(name, price, color, size, density, forWhatGender, forWhatAge);
         this.pocketsNumber = pocketsNumber;
         this.isSkinny = isSkinny;
         this.isStretch = isStretch;

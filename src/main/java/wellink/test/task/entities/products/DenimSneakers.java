@@ -24,13 +24,13 @@ public class DenimSneakers extends Clothes {
     public DenimSneakers() {
     }
 
-    public DenimSneakers(Long id, String name, Double price, Color color) {
-        super(id, name, price, color);
+    public DenimSneakers(String name, Double price, Color color) {
+        super(name, price, color);
     }
 
-    public DenimSneakers(Long id, String name, Double price, Color color, Size size,
+    public DenimSneakers(String name, Double price, Color color, Size size,
                          Density density, Gender forWhatGender, Age forWhatAge) {
-        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        super(name, price, color, size, density, forWhatGender, forWhatAge);
     }
 
     public DenimSneakers(ClosureType closureType, ShoeSole.SoleThickness soleThickness,
@@ -41,19 +41,19 @@ public class DenimSneakers extends Clothes {
         this.stiffness = stiffness;
     }
 
-    public DenimSneakers(Long id, String name, Double price, Color color, ClosureType closureType,
+    public DenimSneakers(String name, Double price, Color color, ClosureType closureType,
                          ShoeSole.SoleThickness soleThickness, Boolean isInsulated, Stiffness stiffness) {
-        super(id, name, price, color);
+        super(name, price, color);
         this.closureType = closureType;
         this.soleThickness = soleThickness;
         this.isInsulated = isInsulated;
         this.stiffness = stiffness;
     }
 
-    public DenimSneakers(Long id, String name, Double price, Color color, Size size, Density density,
+    public DenimSneakers(String name, Double price, Color color, Size size, Density density,
                          Gender forWhatGender, Age forWhatAge, ClosureType closureType,
                          ShoeSole.SoleThickness soleThickness, Boolean isInsulated, Stiffness stiffness) {
-        super(id, name, price, color, size, density, forWhatGender, forWhatAge);
+        super(name, price, color, size, density, forWhatGender, forWhatAge);
         this.closureType = closureType;
         this.soleThickness = soleThickness;
         this.isInsulated = isInsulated;

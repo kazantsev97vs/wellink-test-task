@@ -17,12 +17,12 @@ public class Lace extends Material {
 
     private Density density;
 
-    public Lace(Long id, String name, Double price, Color color) {
-        super(id, name, price, color);
+    public Lace(String name, Double price, Color color) {
+        super(name, price, color);
     }
 
-    public Lace(Long id, String name, Double price, Color color, Integer length, Density density) {
-        super(id, name, price, color);
+    public Lace(String name, Double price, Color color, Integer length, Density density) {
+        super(name, price, color);
         this.length = length;
         this.density = density;
     }
